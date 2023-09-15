@@ -16,6 +16,13 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "prettier": "^3.0.2"
+    "@types/node": "20.6.1",
+    "@types/react": "18.2.21",
+    "bun-types": "^1.0.2",
+    "prettier": "^3.0.2",
+    "typescript": "5.2.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }
