@@ -6,16 +6,20 @@
   "scripts": {
     "dev": "next dev",
     "lint:check": "prettier --check .",
-    "lint:fix": "prettier --write ."
+    "lint:fix": "prettier --write .",
+    "test": "bun test",
+    "test:watch": "bun --watch test"
   },
   "author": "@henriquenas",
   "license": "MIT",
   "dependencies": {
     "next": "^13.1.6",
+    "pg": "8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/pg": "^8.10.7",
     "@types/node": "20.6.2",
     "@types/react": "18.2.21",
     "bun-types": "^1.0.2",
