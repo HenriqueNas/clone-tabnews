@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "lib": [
-      "ESNext"
-    ],
+    "baseUrl": "./",
+    "paths": {
+      "@v1/*": ["pages/api/v1/*"],
+      "@infra/*": ["infra/*"]
+    },
+    "lib": ["ESNext"],
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
@@ -25,12 +28,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
