@@ -4,11 +4,14 @@
   "description": "Um projeto pra eu estudar juntinho com o Filipe Deschamps",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "bun run services:up && next dev || npm run services:stop",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "bun test",
-    "test:watch": "bun --watch test"
+    "test:watch": "bun --watch test",
+    "services:up": "docker compose -f infra/compose.yaml up -d",
+    "services:stop": "docker compose -f infra/compose.yaml stop",
+    "services:down": "docker compose -f infra/compose.yaml down"
   },
   "author": "@henriquenas",
   "license": "MIT",
