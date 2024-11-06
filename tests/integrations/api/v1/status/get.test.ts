@@ -1,5 +1,5 @@
 import { DatabaseStatusResponse, StatusResponse } from "@v1/status";
-import { beforeAll, expect, test, describe } from "bun:test";
+import { beforeAll, expect, test, describe } from "@jest/globals";
 
 describe("GET /api/v1/status", () => {
   var response: Response;
@@ -38,18 +38,18 @@ describe("GET /api/v1/status database", () => {
 
   test("should return a valid current database version", () => {
     expect(database.version).toBeDefined();
-    expect(database.version).toBeTypeOf("string");
+    expect(typeof database.version).toBe("string");
     expect(database.version).toEqual("16.0");
   });
 
   test("should return the current opened connections as number", () => {
     expect(database.opened_connections).toBeDefined();
-    expect(database.opened_connections).toBeTypeOf("number");
+    expect(typeof database.opened_connections).toBe("number");
     expect(database.opened_connections).toEqual(1);
   });
 
   test("should return the max connections for database", () => {
     expect(database.max_connections).toBeDefined();
-    expect(database.max_connections).toBeTypeOf("number");
+    expect(typeof database.max_connections).toBe("number");
   });
 });
