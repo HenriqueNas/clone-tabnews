@@ -1,8 +1,7 @@
 import { Client } from "pg";
 
-// TODO(@HenriqueNas): fix usage of Bun.env
-declare module "bun" {
-  interface Env {
+declare module global {
+  interface ProcessEnv {
     DB_USER: string;
     DB_DATABASE: string;
     DB_PASSWORD: string;
