@@ -1,6 +1,6 @@
-import { Client } from "pg";
+import { Client } from 'pg';
 
-declare module global {
+declare namespace global {
   interface ProcessEnv {
     DB_USER: string;
     DB_DATABASE: string;
@@ -26,7 +26,7 @@ async function query(queryObject: any): Promise<any> {
 
     return result;
   } catch (error) {
-    console.error("error at database.ts `query` method", error);
+    console.error('error at database.ts `query` method', error);
   } finally {
     await client.end();
   }

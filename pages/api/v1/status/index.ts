@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next/types";
-import database from "@infra/database";
+import { NextApiRequest, NextApiResponse } from 'next/types';
+import database from '@infra/database';
 
 interface StatusResponse {
   env: typeof process.env.NODE_ENV;
@@ -8,7 +8,7 @@ interface StatusResponse {
 }
 
 interface DatabaseStatusResponse {
-  status: "helthly" | "unhealthy";
+  status: 'helthly' | 'unhealthy';
   max_connections: number;
   opened_connections: number;
   version: string;
@@ -16,14 +16,14 @@ interface DatabaseStatusResponse {
 
 async function status(
   _: NextApiRequest,
-  response: NextApiResponse,
+  response: NextApiResponse
 ): Promise<void> {
   const updatedAt = new Date().toISOString();
 
-  const queryServerVersion = await database.query("SHOW server_version;");
+  const queryServerVersion = await database.query('SHOW server_version;');
   const serverVersionResult = queryServerVersion.rows[0].server_version;
 
-  const queryMaxConnections = await database.query("SHOW max_connections;");
+  const queryMaxConnections = await database.query('SHOW max_connections;');
   const maxConnextionsResult = queryMaxConnections.rows[0].max_connections;
 
   const databaseName = process.env.POSTGRES_DB;
@@ -38,7 +38,7 @@ async function status(
   const openedConnectionsResult = queryOpenedConnections.rows[0].count;
 
   const databaseStatus: DatabaseStatusResponse = {
-    status: "helthly",
+    status: 'helthly',
     opened_connections: Number(openedConnectionsResult),
     max_connections: Number(maxConnextionsResult),
     version: serverVersionResult.toString(),

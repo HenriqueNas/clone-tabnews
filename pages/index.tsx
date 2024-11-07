@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 function Home() {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <h1>Página em construção!</h1>
