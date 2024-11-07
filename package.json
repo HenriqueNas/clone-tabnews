@@ -4,7 +4,7 @@
   "description": "Um projeto pra eu estudar juntinho com o Filipe Deschamps",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm run services:up && next dev || npm run services:stop",
+    "dev": "pnpm run services:up && next dev || pnpm run services:stop",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "pnpm jest",
