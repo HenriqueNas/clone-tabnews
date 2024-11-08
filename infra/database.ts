@@ -1,20 +1,13 @@
 import { Client, QueryConfig } from 'pg';
 
 async function query(queryObject: string | QueryConfig): Promise<any> {
-  const sslCertBase64 = process.env.POSTGRES_SSL_CERT;
-
   const client = new Client({
     host: process.env.POSTGRES_HOST,
     port: Number(process.env.POSTGRES_PORT),
     user: process.env.POSTGRES_USER,
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
-    ssl: sslCertBase64
-      ? {
-          rejectUnauthorized: true,
-          ca: Buffer.from(sslCertBase64, 'base64').toString('utf-8'),
-        }
-      : undefined,
+    ssl: process.env.NODE_ENV !== 'production' ? false : true,
   });
 
   try {
@@ -26,9 +19,7 @@ async function query(queryObject: string | QueryConfig): Promise<any> {
     console.error('error at database.ts `query` method', error);
     throw error;
   } finally {
-    if (client) {
-      await client.end();
-    }
+    await client.end();
   }
 }
 
