@@ -20,7 +20,7 @@ async function migrations(
       dryRun: resquest.method === 'GET',
       direction: 'up',
       migrationsTable: 'pgmigrations',
-      dir: join('infra', 'migrations'),
+      dir: join(process.cwd(), 'infra', 'migrations'),
       log: () => {},
     });
 
