@@ -9,7 +9,7 @@ function Home() {
         alignItems: 'center',
       }}
     >
-      <h1>Página em construção!</h1>
+      <h1>Isso está em outra branch.. develop?</h1>
     </div>
   );
 }
