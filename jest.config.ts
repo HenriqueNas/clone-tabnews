@@ -3,7 +3,7 @@ import nextJest from 'next/jest.js';
 
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.development' });
+dotenv.config({ path: ['.env', '.env.development'] });
 
 const createJestConfig = nextJest({
   dir: './',
