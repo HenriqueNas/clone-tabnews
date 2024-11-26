@@ -4,7 +4,7 @@
   "description": "Um projeto pra eu estudar juntinho com o Filipe Deschamps",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm run services:up && next dev || pnpm run services:stop",
+    "dev": "pnpm services:up && ./infra/wait-for.sh localhost 5432 && pnpm migration:up && next dev",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "pnpm jest --runInBand",
@@ -13,16 +13,16 @@
     "services:stop": "docker compose -f infra/compose.yaml stop",
     "services:down": "docker compose -f infra/compose.yaml down",
     "migration:create": "node-pg-migrate -m infra/migrations create",
-    "migration:up": "node-pg-migrate -m infra/migrations up",
-    "migration:down": "node-pg-migrate -m infra/migrations down"
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
   },
   "author": "@henriquenas",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "dotenv-expand": "^12.0.1",
     "next": "^13.1.6",
-    "node-pg-migrate": "^7.7.1",
-    "pg": "8.11.3",
+    "node-pg-migrate": "^6.2.2",
+    "pg": "^8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -36,10 +36,9 @@
     "@types/pg": "^8.10.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "^18.3.1",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
+    "jest": "^29.6.2",
     "postcss": "^8.4.47",
-    "prettier": "^3.0.2",
+    "prettier": "^2.8.8",
     "tailwindcss": "^3.4.14",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
